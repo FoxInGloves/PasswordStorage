@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="PasswordStorage.Views.MainPage"
+    x:DataType="implementation:MainPageViewModel"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:implementation="clr-namespace:PasswordStorage.ViewModels.Implementation">
+
+    <Grid RowDefinitions=".87*, .13*">
+
+        <ScrollView>
+
+            <CollectionView ItemsSource="{Binding Notes, Mode=TwoWay}">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate x:DataType="{x:Type x:String}">
+
+                        <SwipeView>
+
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type implementation:MainPageViewModel}}, Path=DeleteCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Text="Delete" />
+                                    <SwipeItem Text="Rename" />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <Grid Padding="10,10,10,0">
+                                <Frame>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type implementation:MainPageViewModel}}, Path=NavigateDataPageCommand}" CommandParameter="{Binding .}" />
+                                    </Frame.GestureRecognizers>
+                                    <Label Text="{Binding .}" />
+                                </Frame>
+                            </Grid>
+
+                        </SwipeView>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </ScrollView>
+
+        <Button
+            Command="{Binding AddNoteCommand}"
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            Margin="0,0,0,10"
+            Text="Add"
+            VerticalOptions="Center" />
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    Shell.FlyoutBehavior="Disabled"
+    x:Class="PasswordStorage.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:views="clr-namespace:Notes_MAUI.Views"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views1="clr-namespace:PasswordStorage.Views">
+
+    <ShellContent
+        ContentTemplate="{DataTemplate views1:MainPage}"
+        Route="MainPage"
+        Title="Home" />
+
+</Shell>

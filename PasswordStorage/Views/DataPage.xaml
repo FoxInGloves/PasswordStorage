@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="Notes_MAUI.Views.DataPage"
+    x:DataType="implementation1:DataPageViewModel"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:implementation1="clr-namespace:PasswordStorage.ViewModels.Implementation">
+
+    <Shell.TitleView>
+        <Label
+            FontFamily="OpenSansSemibold"
+            FontSize="26"
+            Padding="10,5,0,0"
+            Text="{Binding NameOfNote}"
+            TextColor="White"
+            VerticalOptions="Center" />
+    </Shell.TitleView>
+
+    <Grid RowDefinitions="45, *">
+
+        <ScrollView Grid.Row="1" WidthRequest="500">
+
+            <Grid HorizontalOptions="Center">
+
+                <VerticalStackLayout HorizontalOptions="Center">
+
+                    <Label FontSize="15" Text="Login:" />
+
+                    <Border
+                        HorizontalOptions="Start"
+                        StrokeShape="RoundRectangle 7,7,7,7"
+                        WidthRequest="300">
+                        <Entry
+                            FontSize="18"
+                            HorizontalOptions="Start"
+                            Keyboard="Email"
+                            Text="{Binding Login}"
+                            WidthRequest="300" />
+                    </Border>
+
+                    <Label
+                        FontSize="15"
+                        Margin="0,30,0,0"
+                        Text="Password:"
+                        VerticalOptions="End" />
+                    <Border
+                        HorizontalOptions="Start"
+                        StrokeShape="RoundRectangle 7,7,7,7"
+                        WidthRequest="300">
+                        <Entry
+                            FontSize="18"
+                            IsPassword="False"
+                            Text="{Binding Password}" />
+                    </Border>
+
+                    <Label
+                        FontSize="15"
+                        Margin="0,30,0,0"
+                        Text="Note" />
+                    <Border
+                        HorizontalOptions="Center"
+                        StrokeShape="RoundRectangle 7,7,7,7"
+                        WidthRequest="300">
+                        <Editor
+                            AutoSize="TextChanges"
+                            FontSize="18"
+                            HeightRequest="70"
+                            IsSpellCheckEnabled="False"
+                            IsTextPredictionEnabled="False"
+                            Text="{Binding Note}" />
+                    </Border>
+
+                </VerticalStackLayout>
+
+                <Button
+                    Command="{Binding SaveCommand}"
+                    FontFamily="OpenSansSemibold"
+                    FontSize="16"
+                    HorizontalOptions="End"
+                    Margin="0,0,0,30"
+                    Text="Save"
+                    VerticalOptions="End"
+                    WidthRequest="90" />
+
+            </Grid>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>
